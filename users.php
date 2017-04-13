@@ -8,16 +8,12 @@ class Users{
     public function __construct(){
         $db_con= new dbConnection();
         $this->link=$db_con->connect();
-        
-        
-
-
-         }
+           }
 
 
     function addUser($fname=false,$sname=false,$age=false){
 
-          $pre=$this->link->prepare("INSERT INTO sqltut (fname,sname,age) VALUES (?,?,?)");
+          $pre=$this->link->prepare("INSERT INTO users (fname,sname,age) VALUES (?,?,?)");
           $pa=array($fname,$sname,$age);
           $pre->execute($pa);
 
@@ -29,7 +25,7 @@ class Users{
 public function getUser($sel=false){
 
    //fetch one row;
-$statement = $this->link->prepare("select *from sqltut");
+$statement = $this->link->prepare("select *from users");
 $statement->execute();
   
 $userInfo=$statement->fetchALL(PDO::FETCH_ASSOC);
@@ -42,7 +38,7 @@ foreach($userInfo as $info){
 
   
 public function updateInfo($fname=false,$sname=false,$age=false, $id=false){
-    $sql = "UPDATE sqltut SET 
+    $sql = "UPDATE users SET 
             fname = :fn, 
             age = :age, 
             sname= :sn
