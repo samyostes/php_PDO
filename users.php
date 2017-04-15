@@ -24,7 +24,7 @@ class Users{
 
 public function getUser($sel=false){
 
-   //fetch one row;
+   //fetch rows;
 $statement = $this->link->prepare("select *from users");
 $statement->execute();
   
@@ -36,7 +36,7 @@ foreach($userInfo as $info){
 
 }
 
-  
+  //update rows
 public function updateInfo($fname=false,$sname=false,$age=false, $id=false){
     $sql = "UPDATE users SET 
             fname = :fn, 
@@ -53,7 +53,7 @@ $stmt->execute();
 }
 
 }
-
+//create new object
  $user= new Users();
  $user>addUser("Lady","Gaga",35);
  $user->getUser();
