@@ -1,6 +1,6 @@
 
 <?php
-include 'PDOconnect.php';
+include 'connect.php';
 class Users{
     public $link;
     protected $fname,$sname,$age,$id;
